@@ -1,0 +1,87 @@
+# Default values for generic-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 2
+hpa:
+  maxReplicas: 2
+  minReplicas: 1
+  cpuUtilization:
+    targetPercentage: 50
+secrets:
+  - name: totally-not-database-credentials
+    type: Opaque
+    data:
+      db-uri: http://youtube.com
+#  - name: my-credentials
+#    type: Opaque
+#    data:
+#      FOO: bar
+env:
+  - name: "SOME_ENV"
+    value: "some value"
+  - name: "DB_URI"
+    valueFrom:
+      secretKeyRef:
+        name: totally-not-database-credentials
+        key: db-uri
+#envFrom: # More concise way to specify env vars from secret
+#  - secretRef:
+#      name: my-credentials
+deployment:
+  healthcheck: /
+  podAnnotations: {}
+  #serviceAccountName: ...
+  #healthcheckCommand: # Use this in alternative to "healthcheck"
+  #  - "echo"
+  # periodSeconds: 10 # Optional
+  # timeoutSeconds: 1 # Optional
+  # successThreshold: 1 # Optional
+  # failureThreshold: 3 # Optional
+  # command: ["yarn"] # Optional: Allows the specification of a start command
+  # args: ["run", "start"] # Optional: Allows the specification start command parameters
+  # strategy: # Optional: Specify Recreate instead of rolling update, useful for background jobs
+  #   type: Recreate
+  initialDelaySeconds: 10 # optional; defaults to 10
+  image:
+    repository: nginx
+    tag: latest
+    pullPolicy: IfNotPresent
+  minReadySeconds: 1 # optional; defaults to 1
+service:
+# `LoadBalancer` / `ClusterIP` / `""` are available options
+# Use `ClusterIP` without ports for a background process
+  type: ""
+  #acm: arn:aws:acm:....
+  #internal: true # to create an internal loadbalancer
+  name: api
+  externalPort: 80
+  internalPort: 80
+ingress: # Ingress is optional, you can remove it for a background process
+  annotations:
+    # To use kube-lego: uncomment the tls-acme annotation
+    # To use a custom certificate: install it in secret and specify the secret name for each host
+    # kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: "nginx"
+  hosts:
+  - name: clevermeow.biz
+    rules:
+    - subdomain: mood.
+      path: /
+    # secretName: foo-tls
+    - subdomain: moo.
+      path: /
+  - name: clevermoo.biz
+    rules:
+    - subdomain:
+      path: /
+    - subdomain: zoom.
+      path: /
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+# rawService: # Optional, to fully specify an additional service
+# rawIngress: # Optional, to fully specify an additional ingress
