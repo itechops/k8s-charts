@@ -15,7 +15,7 @@ To add or update a chart, do the following:
 $ helm create <chart-name>
 $ helm package <chart-name>
 $ mv <chart-name>-0.1.0.tgz docs
-$ helm repo index docs --url https://itech.github.com/kubernetes-charts
+$ helm repo index docs --url https://itechops.github.io/k8s-charts
 $ git add -i
 $ git commit -av
 $ git push origin master
@@ -23,7 +23,7 @@ $ git push origin master
 
 From there, I can do:
 ```
-helm repo add itech https://itech.github.com/kubernetes-charts
+helm repo add itech https://itechops.github.io/k8s-charts
 helm install itech/<chart-name>
 ```
 
@@ -34,11 +34,10 @@ To release a new version of `generic-app`:
 * `helm package generic-app`
 * `mv generic-app-X.Y.Z.tgz ../docs/`
 * `cd ..`
-* `helm repo index docs --url https://itech.github.com/kubernetes-charts`
+* `helm repo index docs --url https://itechops.github.io/k8s-charts`
 * Commit and push to the repo
 * Tag the release `git tag vX.Y.X`
 * Push tags `git push --tags`
-* Deploy to Google Page could take some time
 * Update your local repo `helm repo update`
 
 ## Customizing values and installing a chart
