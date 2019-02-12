@@ -1,4 +1,4 @@
 apiVersion: v1
 description: A Helm chart for Generic itech Apps
 name: generic-app
-version: 0.1.18
+version: 0.1.19

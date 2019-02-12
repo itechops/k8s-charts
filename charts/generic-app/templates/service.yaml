@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Values.service.name }}
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
   {{ if contains "LoadBalancer" .Values.service.type }}
@@ -22,9 +22,9 @@ spec:
   - port: {{ .Values.service.externalPort }}
     targetPort: {{ .Values.service.internalPort }}
     protocol: TCP
-    name: {{ .Release.Name }}
+    name: {{ .Values.service.name }}
   selector:
-    app: {{ .Release.Name }}
+    app: {{ .Values.service.name }}
   {{ if .Values.service.type }}
   type: {{ .Values.service.type }}
   {{ end }}
