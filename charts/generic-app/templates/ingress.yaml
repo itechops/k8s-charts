@@ -8,7 +8,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ $relname }}-{{ $hostname }}
+  name: {{ $relname }}
   annotations:
 {{ $annotations }}
 spec:

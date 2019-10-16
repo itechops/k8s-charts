@@ -4,7 +4,7 @@ This will automatically deploy an app to kubernetes.
 
 ## Prerequisites
 [Install Helm](https://github.com/kubernetes/helm#install)
-`helm repo add itech https://itech.github.com/kubernetes-charts`
+`helm repo add itech https://itechops.github.io/k8s-charts/`
 
 ## Usage
 
