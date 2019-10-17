@@ -5,11 +5,12 @@
 {{ $annotations := toYaml .Values.ingress.annotations | indent 4 }}
 {{- range .Values.ingress.hosts }}
 {{- $hostname := .name }}
+{{ $domain := (split "." .name)._0 }}
 
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ $relname }}
+  name: {{ $relname }}-{{ $domain }}
   annotations:
 {{ $annotations }}
 spec:
