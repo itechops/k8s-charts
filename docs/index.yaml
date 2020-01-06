@@ -2,14 +2,6 @@ apiVersion: v1
 entries:
   generic-app:
   - apiVersion: v1
-    created: 2020-01-06T18:05:58.126648+02:00
-    description: A Helm chart for Generic iTech Apps
-    digest: 4c9e3d70b409eedd95f2c72ecf5756646a51f221cf6172ee71899a1dbfa94958
-    name: generic-app
-    urls:
-    - https://itechops.github.io/k8s-charts/generic-app-0.1.22.tgz
-    version: 0.1.22
-  - apiVersion: v1
     created: 2020-01-06T18:05:58.126273+02:00
     description: A Helm chart for Generic iTech Apps
     digest: f46565faf31b05abb3d9fed5354e8b28469945f447a6cfa7b596d288be59c749
