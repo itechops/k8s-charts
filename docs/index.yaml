@@ -2,7 +2,15 @@ apiVersion: v1
 entries:
   generic-app:
   - apiVersion: v1
-    created: 2019-10-17T11:36:14.850057+03:00
+    created: 2020-01-06T18:05:58.126648+02:00
+    description: A Helm chart for Generic iTech Apps
+    digest: 4c9e3d70b409eedd95f2c72ecf5756646a51f221cf6172ee71899a1dbfa94958
+    name: generic-app
+    urls:
+    - https://itechops.github.io/k8s-charts/generic-app-0.1.22.tgz
+    version: 0.1.22
+  - apiVersion: v1
+    created: 2020-01-06T18:05:58.126273+02:00
     description: A Helm chart for Generic iTech Apps
     digest: f46565faf31b05abb3d9fed5354e8b28469945f447a6cfa7b596d288be59c749
     name: generic-app
@@ -10,7 +18,7 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.21.tgz
     version: 0.1.21
   - apiVersion: v1
-    created: 2019-10-17T11:36:14.849668+03:00
+    created: 2020-01-06T18:05:58.125282+02:00
     description: A Helm chart for Generic iTech Apps
     digest: db31d14a836cbffba103908e0bf3c15c172ee2979703849ed2f6eb8b58d1b530
     name: generic-app
@@ -18,11 +26,11 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.20.tgz
     version: 0.1.20
   - apiVersion: v1
-    created: 2019-10-17T11:36:14.849271+03:00
+    created: 2020-01-06T18:05:58.124223+02:00
     description: A Helm chart for Generic itech Apps
     digest: 367ec214fb986ee26bee0bdb80804d2ad57dcaba99fbf103148f845c79f58581
     name: generic-app
     urls:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.19.tgz
     version: 0.1.19
-generated: 2019-10-17T11:36:14.848606+03:00
+generated: 2020-01-06T18:05:58.122991+02:00
