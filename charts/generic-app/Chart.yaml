@@ -1,7 +1,7 @@
 apiVersion: v2
 name: generic-app
-version: 0.1.22
-appVersion: 0.1.22
+version: 0.1.23
+appVersion: 0.1.23
 description: A Helm chart for Generic iTech Apps
 icon: https://minio.itech.md/public/faviconold.ico
 keywords:

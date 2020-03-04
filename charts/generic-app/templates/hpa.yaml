@@ -1,17 +1,18 @@
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ .Release.Name }}
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
 spec:
-  maxReplicas: {{ .Values.hpa.maxReplicas }}
-  minReplicas: {{ .Values.hpa.minReplicas }}
   scaleTargetRef:
-    apiVersion: extensions/v1beta1
+    apiVersion: {{ template "deployment.apiVersion" . }}
     kind: Deployment
     name: {{ .Release.Name }}
-    metrics:
+  maxReplicas: {{ .Values.hpa.maxReplicas }}
+  minReplicas: {{ .Values.hpa.minReplicas }}
+  metrics:
 {{- with .Values.hpa.cpuUtilization.targetPercentage }}
     - type: Resource
       resource:

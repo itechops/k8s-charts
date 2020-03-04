@@ -2,8 +2,23 @@ apiVersion: v1
 entries:
   generic-app:
   - apiVersion: v2
+    appVersion: 0.1.23
+    created: 2020-03-04T11:58:33.365476+02:00
+    description: A Helm chart for Generic iTech Apps
+    digest: ebc515d8460b2942c485e3e4ff61255a069f82f44737732a7e73c4747efdcfa9
+    icon: https://minio.itech.md/public/faviconold.ico
+    keywords:
+    - itech-generic-app
+    maintainers:
+    - email: support@itech.md
+      name: iTECH
+    name: generic-app
+    urls:
+    - https://itechops.github.io/k8s-charts/generic-app-0.1.23.tgz
+    version: 0.1.23
+  - apiVersion: v2
     appVersion: 0.1.22
-    created: 2020-03-04T11:20:15.413522+02:00
+    created: 2020-03-04T11:58:33.364576+02:00
     description: A Helm chart for Generic iTech Apps
     digest: 75effc52afdc15f1c5d9d9ea30aeb521f2212233e9fc2b144c3f59a633f7d5dd
     icon: https://minio.itech.md/public/faviconold.ico
@@ -17,7 +32,7 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.22.tgz
     version: 0.1.22
   - apiVersion: v1
-    created: 2020-03-04T11:20:15.413054+02:00
+    created: 2020-03-04T11:58:33.363669+02:00
     description: A Helm chart for Generic iTech Apps
     digest: f46565faf31b05abb3d9fed5354e8b28469945f447a6cfa7b596d288be59c749
     name: generic-app
@@ -25,7 +40,7 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.21.tgz
     version: 0.1.21
   - apiVersion: v1
-    created: 2020-03-04T11:20:15.412372+02:00
+    created: 2020-03-04T11:58:33.362858+02:00
     description: A Helm chart for Generic iTech Apps
     digest: db31d14a836cbffba103908e0bf3c15c172ee2979703849ed2f6eb8b58d1b530
     name: generic-app
@@ -33,11 +48,11 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.20.tgz
     version: 0.1.20
   - apiVersion: v1
-    created: 2020-03-04T11:20:15.411585+02:00
+    created: 2020-03-04T11:58:33.362015+02:00
     description: A Helm chart for Generic itech Apps
     digest: 367ec214fb986ee26bee0bdb80804d2ad57dcaba99fbf103148f845c79f58581
     name: generic-app
     urls:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.19.tgz
     version: 0.1.19
-generated: 2020-03-04T11:20:15.410386+02:00
+generated: 2020-03-04T11:58:33.357311+02:00
