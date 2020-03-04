@@ -11,4 +11,16 @@ spec:
     apiVersion: extensions/v1beta1
     kind: Deployment
     name: {{ .Release.Name }}
-  targetCPUUtilizationPercentage: {{ .Values.hpa.cpuUtilization.targetPercentage }}
+    metrics:
+{{- with .Values.hpa.cpuUtilization.targetPercentage }}
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: {{ . }}
+{{- end }}
+{{- with .Values.hpa.memoryUtilization.targetPercentage }}
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: {{ . }}
+{{- end }}

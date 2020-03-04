@@ -1,4 +1,11 @@
-apiVersion: v1
-description: A Helm chart for Generic iTech Apps
+apiVersion: v2
 name: generic-app
-version: 0.1.21
+version: 0.1.22
+appVersion: 0.1.22
+description: A Helm chart for Generic iTech Apps
+icon: https://minio.itech.md/public/faviconold.ico
+keywords:
+- itech-generic-app
+maintainers:
+- name: iTECH
+  email: support@itech.md
