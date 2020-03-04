@@ -7,7 +7,7 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   scaleTargetRef:
-    apiVersion: {{ template "deployment.apiVersion" . }}
+    apiVersion: extensions/v1beta1
     kind: Deployment
     name: {{ .Release.Name }}
   maxReplicas: {{ .Values.hpa.maxReplicas }}
