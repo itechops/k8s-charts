@@ -1,16 +1,16 @@
 apiVersion: v1
-description: A Helm chart for Generic Clevertech Apps
-home: https://github.com/clevertech/kubernetes-charts
-icon: https://www.clevertech.biz/static/media/logo.d14a672e.svg
+description: A Helm chart for Generic iTech Apps
+home: https://github.com/itechops/k8s-charts
+icon: https://minio.itech.md/public/faviconold.ico
 keywords:
 - generic-app
 - nodejs
 - nginx
 - react
 maintainers:
-- email: devops@cleverbuild.biz
-  name: Clevertech
-name: generic-app
+- name: iTECH
+  email: support@itech.md
+name: itech-generic-app
 sources:
-- https://github.com/clevertech/kubernetes-charts
-version: 0.1.24
+- https://github.com/itechops/k8s-charts
+version: 0.1.25

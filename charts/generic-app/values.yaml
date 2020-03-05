@@ -7,6 +7,8 @@ hpa:
   minReplicas: 1
   cpuUtilization:
     targetPercentage: 50
+  memoryUtilization:
+    targetPercentage: 70
 secrets:
   - name: totally-not-database-credentials
     type: Opaque
@@ -81,18 +83,18 @@ service:
     # kubernetes.io/tls-acme: "true"
 #    kubernetes.io/ingress.class: "nginx"
 #  hosts:
-#  - name: clevermeow.biz
+#  - name: atitech.md
 #    rules:
-#    - subdomain: mood.
+#    - subdomain: something.
 #      path: /
     # secretName: foo-tls
-#    - subdomain: moo.
+#    - subdomain: another.
 #      path: /
-#  - name: clevermoo.biz
+#  - name: toitech.md
 #    rules:
 #    - subdomain:
 #      path: /
-#    - subdomain: zoom.
+#    - subdomain: go.
 #      path: /
 resources:
   limits:
