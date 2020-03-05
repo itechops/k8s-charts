@@ -7,8 +7,6 @@ hpa:
   minReplicas: 1
   cpuUtilization:
     targetPercentage: 50
-  memoryUtilization:
-    targetPercentage: 70
 secrets:
   - name: totally-not-database-credentials
     type: Opaque
@@ -49,6 +47,24 @@ deployment:
     tag: latest
     pullPolicy: IfNotPresent
   minReadySeconds: 1 # optional; defaults to 1
+  ## Example of extraContainers and extraVolumes values usage
+  ## Both attributes are written as is. There is no template you should provide the entire yaml content
+  ## `extratContainers` is and aditional container to be added to the pod
+  # extraContainers:
+  #   - name: sidecar-container-name
+  #     image: clevertech/sidecar-image:0.0.1
+  #     command: ["container", "command", "here"]
+  #     securityContext:
+  #       runAsUser: 2
+  #       allowPrivilegeEscalation: false
+  #     volumeMounts:
+  #       - name: "volume-name" #"Volume name from extra Volumes"
+  #         mountPath: "/secrets/path/mount"
+  #         readOnly: true
+  # extraVolumes:
+  #   - name: "volume-name"
+  #     secret:
+  #       secretName: "secret name reference"
 service:
 # `LoadBalancer` / `ClusterIP` / `""` are available options
 # Use `ClusterIP` without ports for a background process
@@ -58,26 +74,26 @@ service:
   name: api
   externalPort: 80
   internalPort: 80
-ingress: # Ingress is optional, you can remove it for a background process
-  annotations:
+#ingress: # Ingress is optional, you can remove it for a background process
+#  annotations:
     # To use kube-lego: uncomment the tls-acme annotation
     # To use a custom certificate: install it in secret and specify the secret name for each host
     # kubernetes.io/tls-acme: "true"
-    kubernetes.io/ingress.class: "nginx"
-  hosts:
-  - name: atitech.md
-    rules:
-    - subdomain: something.
-      path: /
+#    kubernetes.io/ingress.class: "nginx"
+#  hosts:
+#  - name: clevermeow.biz
+#    rules:
+#    - subdomain: mood.
+#      path: /
     # secretName: foo-tls
-    - subdomain: another.
-      path: /
-  - name: toitech.md
-    rules:
-    - subdomain:
-      path: /
-    - subdomain: go.
-      path: /
+#    - subdomain: moo.
+#      path: /
+#  - name: clevermoo.biz
+#    rules:
+#    - subdomain:
+#      path: /
+#    - subdomain: zoom.
+#      path: /
 resources:
   limits:
     cpu: 100m
@@ -87,3 +103,37 @@ resources:
     memory: 128Mi
 # rawService: # Optional, to fully specify an additional service
 # rawIngress: # Optional, to fully specify an additional ingress
+#jobs:
+#  # first cron
+#  - name: hello-world
+#    image:
+#      repository: hello-world
+#      tag: latest
+#      imagePullPolicy: IfNotPresent
+#    schedule: "* * * * *"
+#    failedJobsHistoryLimit: 1
+#    successfulJobsHistoryLimit: 3
+#    concurrencyPolicy: Allow
+#    restartPolicy: OnFailure
+#  # second cron
+#  - name: hello-ubuntu
+#    image:
+#      repository: ubuntu
+#      tag: latest
+#      imagePullPolicy: Always
+#    schedule: "*/5 * * * *"
+#    command: ["/bin/bash"]
+#    args:
+#      - "-c"
+#      - "echo $(date) - hello from ubuntu"
+#    resources:
+#      limits:
+#        cpu: 50m
+#        memory: 256Mi
+#      requests:
+#        cpu: 50m
+#        memory: 256Mi
+#    failedJobsHistoryLimit: 1
+#    successfulJobsHistoryLimit: 3
+#    concurrencyPolicy: Forbid
+#    restartPolicy: OnFailure

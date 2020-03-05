@@ -1,7 +1,8 @@
-{{- $relname := .Values.service.name -}}
+{{- if .Values.ingress }}
+{{- $relname := .Release.Name -}}
 {{ if .Values.service.type }}
 {{ else }}
-{{ $relname := .Values.service.name }}
+{{ $relname := .Release.Name }}
 {{ $annotations := toYaml .Values.ingress.annotations | indent 4 }}
 {{- range .Values.ingress.hosts }}
 {{- $hostname := .name }}
@@ -37,4 +38,5 @@ spec:
 ---
   {{ end }}
 
+{{ end }}
 {{ end }}

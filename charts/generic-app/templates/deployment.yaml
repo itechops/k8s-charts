@@ -32,6 +32,10 @@ spec:
       {{- if .Values.deployment.serviceAccountName }}
       serviceAccountName: {{ .Values.deployment.serviceAccountName }}
       {{- end }}
+      {{- if .Values.deployment.imagePullSecret }}
+      imagePullSecrets:
+        - name: {{ .Values.deployment.imagePullSecret }}
+      {{- end }}
       containers:
       - name: {{ .Release.Name }}
         {{- if .Values.deployment.command }}
@@ -104,3 +108,10 @@ spec:
         {{- end }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
+{{- if .Values.deployment.extraContainers }}
+{{ toYaml .Values.deployment.extraContainers | indent 6 }}
+{{- end }}
+{{- if .Values.deployment.extraVolumes }}
+      volumes:
+{{ toYaml .Values.deployment.extraVolumes | indent 6 }}
+{{- end }}

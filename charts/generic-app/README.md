@@ -4,7 +4,7 @@ This will automatically deploy an app to kubernetes.
 
 ## Prerequisites
 [Install Helm](https://github.com/kubernetes/helm#install)
-`helm repo add itech https://itechops.github.io/k8s-charts/`
+`helm repo add clevertech https://clevertech.github.com/kubernetes-charts`
 
 ## Usage
 
@@ -12,7 +12,7 @@ Copy the generic values to a location of your filesystem for modification and cu
 `cp generic-app/values.yaml updated-values.yaml`
 
 Now simply run the helm command:
-`helm install -f updated-values.yaml itech/generic-app --name your-appname --namespace your-namespace`
+`helm install -f updated-values.yaml clevertech/generic-app --name your-appname --namespace your-namespace`
 
 For LoadBalancers you have several options
 
@@ -40,11 +40,11 @@ ingress:
       path: /
     - subdomain: moo.  # <- don't forget the .
       path: /
-  - name: itech.md
+  - name: cleverbuild.biz
     rules:
     - subdomain: # <- naked domain
       path: /
-    - subdomain: zoom. # <- zoom.itech.md
+    - subdomain: zoom. # <- zoom.cleverbuild.biz
       path: /
 ```
 This allows multiple domains to be specified. with multiple paths for each domain.
@@ -53,7 +53,7 @@ This allows multiple domains to be specified. with multiple paths for each domai
 
 You can update the application by using the update command. Simply `helm get values <app you want to modify>`. Copy that file locally. Make the desired changes then run
 
-`helm upgrade -f updated-values.yaml <app-name> itech/generic-app`
+`helm upgrade -f updated-values.yaml <app-name> clevertech/generic-app`
 
 TODO:
 Use config maps to store non-sensitive data
