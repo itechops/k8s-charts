@@ -30,7 +30,6 @@ data:
         Path             {{ .Values.input.tail.path }}
         Parser           {{ .Values.input.tail.parser }}
         Tag              {{ .Values.filter.kubeTag }}.*
-        Tag_Regex        {{ .Values.input.tail.tag_regex }}
         Refresh_Interval 5
         Mem_Buf_Limit    {{ .Values.input.tail.memBufLimit }}
         Skip_Long_Lines  On
@@ -60,7 +59,7 @@ data:
         Path              {{ .Values.audit.input.path }}
         Parser            {{ .Values.audit.input.parser }}
         DB                /var/log/audit.db
-        Tag               audit.*
+        Tag               {{ .Values.audit.input.tag }}
         Refresh_Interval  5
         Mem_Buf_Limit     {{ .Values.audit.input.memBufLimit }}
         Buffer_Chunk_Size {{ .Values.audit.input.bufferChunkSize }}
@@ -92,6 +91,9 @@ data:
 {{- if .Values.filter.enableExclude }}
         K8S-Logging.Exclude On
 {{- end }}
+{{- if .Values.filter.useJournal }}
+        Use_Journal         On
+{{- end }}
 {{ .Values.extraEntries.filter | indent 8 }}
 
   fluent-bit-output.conf: |
@@ -103,7 +105,7 @@ data:
 {{ else if eq .Values.backend.type "forward" }}
     [OUTPUT]
         Name          forward
-        Match         {{ .Values.backend.forward.match }}
+        Match         *
         Host          {{ .Values.backend.forward.host }}
         Port          {{ .Values.backend.forward.port }}
         Retry_Limit False
@@ -136,6 +138,9 @@ data:
 {{- end }}
 {{- if .Values.backend.es.logstash_prefix }}
         Logstash_Prefix {{ .Values.backend.es.logstash_prefix }}
+{{- if .Values.backend.es.logstash_prefix_key }}
+        Logstash_Prefix_Key {{ .Values.backend.es.logstash_prefix_key }}
+{{- end }}
 {{ else if .Values.backend.es.index }}
         Index {{ .Values.backend.es.index }}
 {{- end }}
@@ -196,6 +201,9 @@ data:
         Proxy {{ .Values.backend.http.proxy }}
 {{- end }}
         Format {{ .Values.backend.http.format }}
+{{- end }}
+{{- if .Values.backend.http.json_date_format }}
+        json_date_format {{ .Values.backend.http.json_date_format }}
 {{- end }}
 {{- range  .Values.backend.http.headers }}
         Header  {{ . }}
