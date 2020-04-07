@@ -1,30 +1,8 @@
 apiVersion: v1
 entries:
-  fluent-bit:
-  - apiVersion: v1
-    appVersion: 1.3.7
-    created: 2020-04-07T15:49:57.563516+03:00
-    description: Fast and Lightweight Log/Data Forwarder for Linux, BSD and OSX
-    digest: 38ab7759a7260d9beaef8fbf8e36411edf46cc6732d7d46d1c664ac8b6451420
-    home: https://fluentbit.io
-    icon: https://fluentbit.io/assets/img/logo1-default.png
-    keywords:
-    - logging
-    - monitoring
-    - fluent
-    - fluentd
-    maintainers:
-    - email: support@itech.md
-      name: iTECH
-    name: fluent-bit
-    sources:
-    - https://fluentbit.io
-    urls:
-    - https://itechops.github.io/k8s-charts/fluent-bit-2.8.12.tgz
-    version: 2.8.12
   generic-app:
   - apiVersion: v1
-    created: 2020-04-07T15:49:57.573453+03:00
+    created: 2020-04-03T19:31:20.161809+03:00
     description: A Helm chart for Generic iTech Apps
     digest: 074a0b4c7aca9f01d768b7c178da7088f686d537700138cfb3f53d36414072aa
     home: https://github.com/itechops/k8s-charts
@@ -44,7 +22,7 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.27.tgz
     version: 0.1.27
   - apiVersion: v1
-    created: 2020-04-07T15:49:57.57243+03:00
+    created: 2020-04-03T19:31:20.160503+03:00
     description: A Helm chart for Generic iTech Apps
     digest: 5edf65b5ac0175dad244951933ffcf0262f92d8fa72ace5504ee9d5127ed0cee
     home: https://github.com/itechops/k8s-charts
@@ -64,7 +42,7 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.26.tgz
     version: 0.1.26
   - apiVersion: v1
-    created: 2020-04-07T15:49:57.571246+03:00
+    created: 2020-04-03T19:31:20.158871+03:00
     description: A Helm chart for Generic iTech Apps
     digest: c2a92c66abf34e99dfd017c0f3b94d002007ef5dc455eff0018a3351c88734ac
     home: https://github.com/itechops/k8s-charts
@@ -85,7 +63,7 @@ entries:
     version: 0.1.25
   - apiVersion: v2
     appVersion: 0.1.24
-    created: 2020-04-07T15:49:57.569965+03:00
+    created: 2020-04-03T19:31:20.157463+03:00
     description: A Helm chart for Generic iTech Apps
     digest: 934a1d7cbcfbd7420d0d6df02f7f6ee05f4fc0a3e7c9b70a965f48155443cc5d
     icon: https://minio.itech.md/public/faviconold.ico
@@ -100,7 +78,7 @@ entries:
     version: 0.1.24
   - apiVersion: v2
     appVersion: 0.1.23
-    created: 2020-04-07T15:49:57.569+03:00
+    created: 2020-04-03T19:31:20.156399+03:00
     description: A Helm chart for Generic iTech Apps
     digest: ebc515d8460b2942c485e3e4ff61255a069f82f44737732a7e73c4747efdcfa9
     icon: https://minio.itech.md/public/faviconold.ico
@@ -115,7 +93,7 @@ entries:
     version: 0.1.23
   - apiVersion: v2
     appVersion: 0.1.22
-    created: 2020-04-07T15:49:57.567754+03:00
+    created: 2020-04-03T19:31:20.155476+03:00
     description: A Helm chart for Generic iTech Apps
     digest: 75effc52afdc15f1c5d9d9ea30aeb521f2212233e9fc2b144c3f59a633f7d5dd
     icon: https://minio.itech.md/public/faviconold.ico
@@ -129,7 +107,7 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.22.tgz
     version: 0.1.22
   - apiVersion: v1
-    created: 2020-04-07T15:49:57.566583+03:00
+    created: 2020-04-03T19:31:20.154316+03:00
     description: A Helm chart for Generic iTech Apps
     digest: f46565faf31b05abb3d9fed5354e8b28469945f447a6cfa7b596d288be59c749
     name: generic-app
@@ -137,7 +115,7 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.21.tgz
     version: 0.1.21
   - apiVersion: v1
-    created: 2020-04-07T15:49:57.56567+03:00
+    created: 2020-04-03T19:31:20.15337+03:00
     description: A Helm chart for Generic iTech Apps
     digest: db31d14a836cbffba103908e0bf3c15c172ee2979703849ed2f6eb8b58d1b530
     name: generic-app
@@ -145,7 +123,7 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.20.tgz
     version: 0.1.20
   - apiVersion: v1
-    created: 2020-04-07T15:49:57.564565+03:00
+    created: 2020-04-03T19:31:20.152335+03:00
     description: A Helm chart for Generic itech Apps
     digest: 367ec214fb986ee26bee0bdb80804d2ad57dcaba99fbf103148f845c79f58581
     name: generic-app
@@ -155,7 +133,7 @@ entries:
   mongo-express:
   - apiVersion: v1
     appVersion: 0.54.0
-    created: 2020-04-07T15:49:57.574395+03:00
+    created: 2020-04-03T19:31:20.162369+03:00
     description: Web-based MongoDB admin interface, written with Node.js and express
     digest: 92f632df9bf3ac1f32c4dafe3501e4fff70cb0ecf13ef92dc75251e7c435aa44
     home: https://github.com/mongo-express/mongo-express
@@ -167,4 +145,4 @@ entries:
     urls:
     - https://itechops.github.io/k8s-charts/mongo-express-1.1.0.tgz
     version: 1.1.0
-generated: 2020-04-07T15:49:57.562365+03:00
+generated: 2020-04-03T19:31:20.151004+03:00
