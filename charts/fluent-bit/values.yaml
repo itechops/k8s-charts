@@ -227,7 +227,7 @@ input:
     parser: docker
     path: /var/log/containers/*.log
     ignore_older: ""
-    tag_regex: (?<pod_name>[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*)_(?<namespace_name>[^_]+)_(?<container_name>.+)-
+    tag_regex: write_something_here
   systemd:
     enabled: false
     filters:
