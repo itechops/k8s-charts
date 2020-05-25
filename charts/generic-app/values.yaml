@@ -43,6 +43,8 @@ deployment:
   # args: ["run", "start"] # Optional: Allows the specification start command parameters
   # strategy: # Optional: Specify Recreate instead of rolling update, useful for background jobs
   #   type: Recreate
+  podAntiaffinity:
+    enabled: true
   initialDelaySeconds: 10 # optional; defaults to 10
   image:
     repository: nginx

@@ -4,6 +4,11 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}
+  {{- if .Values.deployment.podAntiaffinity.enabled }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  {{- end }}
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 spec:
@@ -28,6 +33,18 @@ spec:
       {{- if .Values.deployment.nodeSelector }}
       nodeSelector:
 {{ $nodeSelector }}
+      {{- end }}
+      {{- if .Values.deployment.podAntiaffinity.enabled }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - {{ .Release.Name }}
+            topologyKey: "kubernetes.io/hostname"
       {{- end }}
       {{- if .Values.deployment.serviceAccountName }}
       serviceAccountName: {{ .Values.deployment.serviceAccountName }}
