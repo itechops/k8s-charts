@@ -37,7 +37,7 @@ spec:
       {{- if .Values.deployment.podAntiaffinity.enabled }}
       affinity:
         podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
+          preferredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
               - key: app
