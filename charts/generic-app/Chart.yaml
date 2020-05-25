@@ -14,4 +14,4 @@ maintainers:
 name: generic-app
 sources:
 - https://github.com/itechops/k8s-charts
-version: 0.1.29
+version: 0.1.30

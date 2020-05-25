@@ -38,12 +38,14 @@ spec:
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - {{ .Release.Name }}
+          - weight: 1
+            podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                    - {{ .Release.Name }}
             topologyKey: "kubernetes.io/hostname"
       {{- end }}
       {{- if .Values.deployment.serviceAccountName }}
