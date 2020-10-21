@@ -1,18 +1,18 @@
 {{ $podAnnotations := toYaml .Values.deployment.podAnnotations | indent 8 }}
 {{ $nodeSelector := toYaml .Values.deployment.nodeSelector | indent 8 }}
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  replicas: {{ .Values.replicaCount }}
   {{- if .Values.deployment.podAntiaffinity.enabled }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}
   {{- end }}
-  labels:
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-spec:
-  replicas: {{ .Values.replicaCount }}
   minReadySeconds: {{ default 1 .Values.deployment.minReadySeconds}}
   revisionHistoryLimit: 10
   {{- if .Values.deployment.strategy }}

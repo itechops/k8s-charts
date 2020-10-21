@@ -1,36 +1,8 @@
 # Default values for generic-app.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-replicaCount: 2
-hpa:
-  maxReplicas: 2
-  minReplicas: 1
-  cpuUtilization:
-    targetPercentage: 50
-  memoryUtilization:
-    targetPercentage: 70
-secrets:
-  - name: totally-not-database-credentials
-    type: Opaque
-    data:
-      db-uri: http://youtube.com
-#  - name: my-credentials
-#    type: Opaque
-#    data:
-#      FOO: bar
-env:
-  - name: "SOME_ENV"
-    value: "some value"
-  - name: "DB_URI"
-    valueFrom:
-      secretKeyRef:
-        name: totally-not-database-credentials
-        key: db-uri
-#envFrom: # More concise way to specify env vars from secret
-#  - secretRef:
-#      name: my-credentials
 deployment:
-  healthcheck: /
+  healthcheck: /healthz
   podAnnotations: {}
   #serviceAccountName: ...
   #healthcheckCommand: # Use this in alternative to "healthcheck"
@@ -51,24 +23,14 @@ deployment:
     tag: latest
     pullPolicy: IfNotPresent
   minReadySeconds: 1 # optional; defaults to 1
-  ## Example of extraContainers and extraVolumes values usage
-  ## Both attributes are written as is. There is no template you should provide the entire yaml content
-  ## `extratContainers` is and aditional container to be added to the pod
-  # extraContainers:
-  #   - name: sidecar-container-name
-  #     image: clevertech/sidecar-image:0.0.1
-  #     command: ["container", "command", "here"]
-  #     securityContext:
-  #       runAsUser: 2
-  #       allowPrivilegeEscalation: false
-  #     volumeMounts:
-  #       - name: "volume-name" #"Volume name from extra Volumes"
-  #         mountPath: "/secrets/path/mount"
-  #         readOnly: true
-  # extraVolumes:
-  #   - name: "volume-name"
-  #     secret:
-  #       secretName: "secret name reference"
+replicaCount: 1
+hpa:
+  maxReplicas: 2
+  minReplicas: 1
+  cpuUtilization:
+    targetPercentage: 70
+  memoryUtilization:
+    targetPercentage: 70
 service:
 # `LoadBalancer` / `ClusterIP` / `""` are available options
 # Use `ClusterIP` without ports for a background process
@@ -77,27 +39,7 @@ service:
   #internal: true # to create an internal loadbalancer
   name: api
   externalPort: 80
-  internalPort: 80
-#ingress: # Ingress is optional, you can remove it for a background process
-#  annotations:
-    # To use kube-lego: uncomment the tls-acme annotation
-    # To use a custom certificate: install it in secret and specify the secret name for each host
-    # kubernetes.io/tls-acme: "true"
-#    kubernetes.io/ingress.class: "nginx"
-#  hosts:
-#  - name: atitech.md
-#    rules:
-#    - subdomain: something.
-#      path: /
-    # secretName: foo-tls
-#    - subdomain: another.
-#      path: /
-#  - name: toitech.md
-#    rules:
-#    - subdomain:
-#      path: /
-#    - subdomain: go.
-#      path: /
+  internalPort: 8080
 resources:
   limits:
     cpu: 100m
@@ -105,39 +47,4 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-# rawService: # Optional, to fully specify an additional service
-# rawIngress: # Optional, to fully specify an additional ingress
-#jobs:
-#  # first cron
-#  - name: hello-world
-#    image:
-#      repository: hello-world
-#      tag: latest
-#      imagePullPolicy: IfNotPresent
-#    schedule: "* * * * *"
-#    failedJobsHistoryLimit: 1
-#    successfulJobsHistoryLimit: 3
-#    concurrencyPolicy: Allow
-#    restartPolicy: OnFailure
-#  # second cron
-#  - name: hello-ubuntu
-#    image:
-#      repository: ubuntu
-#      tag: latest
-#      imagePullPolicy: Always
-#    schedule: "*/5 * * * *"
-#    command: ["/bin/bash"]
-#    args:
-#      - "-c"
-#      - "echo $(date) - hello from ubuntu"
-#    resources:
-#      limits:
-#        cpu: 50m
-#        memory: 256Mi
-#      requests:
-#        cpu: 50m
-#        memory: 256Mi
-#    failedJobsHistoryLimit: 1
-#    successfulJobsHistoryLimit: 3
-#    concurrencyPolicy: Forbid
-#    restartPolicy: OnFailure
+    
