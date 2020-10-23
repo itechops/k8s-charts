@@ -31,6 +31,7 @@ spec:
       http:
         paths:
         - path: {{ default "/" .path }}
+          pathType: Prefix ## Supported options: Prefix, Exact and Mixed
           backend:
             service:
               name: {{ $relname }}
