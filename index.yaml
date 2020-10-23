@@ -228,6 +228,20 @@ entries:
     - https://itechops.github.io/k8s-charts/generic-app-0.1.19.tgz
     version: 0.1.19
   mongo-express:
+  - apiVersion: v2
+    appVersion: 0.55.0
+    created: "2020-10-23T15:38:11.462123+03:00"
+    description: Web-based MongoDB admin interface, written with Node.js and express
+    digest: 4aa9b267a53561720e3fd3f1d5b87beb098234740d6e578666f660a83a20991b
+    home: https://github.com/mongo-express/mongo-express
+    icon: https://raw.githubusercontent.com/mongo-express/mongo-express/master/public/images/mongo-express-logo.png
+    maintainers:
+    - email: support@itech.md
+      name: iTECH
+    name: mongo-express
+    urls:
+    - https://itechops.github.io/k8s-charts/mongo-express-1.2.0.tgz
+    version: 1.2.0
   - apiVersion: v1
     appVersion: 0.54.0
     created: "2020-10-23T15:38:11.461404+03:00"
