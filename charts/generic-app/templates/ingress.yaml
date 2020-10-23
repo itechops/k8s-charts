@@ -32,8 +32,10 @@ spec:
         paths:
         - path: {{ default "/" .path }}
           backend:
-            serviceName: {{ $relname }}
-            servicePort: 80
+            service:
+              name: {{ $relname }}
+              port:
+                number: 80
     {{- end }}
 ---
   {{ end }}
