@@ -1,5 +1,0 @@
-{{- if .Values.rawIngress }}
-apiVersion: extensions/v1beta1
-kind: Ingress
-{{ toYaml .Values.rawIngress }}
-{{- end }}

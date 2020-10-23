@@ -1,5 +1,0 @@
-{{- if .Values.rawService }}
-apiVersion: v1
-kind: Service
-{{ toYaml .Values.rawService }}
-{{- end }}
