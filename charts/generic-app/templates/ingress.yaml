@@ -1,3 +1,4 @@
+{{- $kubeTargetVersion := .Capabilities.KubeVersion.GitVersion }}
 {{- if .Values.ingress }}
 {{ $relname := .Values.service.name }}
 {{ if .Values.service.type }}
@@ -8,7 +9,7 @@
 {{- $hostname := .name }}
 {{ $domain := (split "." .name)._0 }}
 
-{{- if semverCompare ">=1.19.0-0" .Capabilities.KubeVersion.GitVersion }}
+{{- if (semverCompare ">=1.19.0" $kubeTargetVersion) }}
 apiVersion: networking.k8s.io/v1
 {{- else }}
 apiVersion: networking.k8s.io/v1beta1
