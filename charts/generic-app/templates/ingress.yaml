@@ -33,6 +33,7 @@ spec:
   rules:
     {{- range .rules }}
     - host: {{ .subdomain }}{{ $hostname }}
+    {{- if (semverCompare ">=1.19.0" $kubeTargetVersion) }}
       http:
         paths:
         - path: {{ default "/" .path }}
@@ -42,6 +43,14 @@ spec:
               name: {{ $relname }}
               port:
                 number: 80
+    {{- else }}
+      http:
+        paths:
+        - path: {{ default "/" .path }}
+          backend:
+            serviceName: {{ $relname }}
+            servicePort: 80
+    {{- end }}
     {{- end }}
 ---
   {{ end }}
