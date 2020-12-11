@@ -8,7 +8,11 @@
 {{- $hostname := .name }}
 {{ $domain := (split "." .name)._0 }}
 
+{{- if semverCompare ">=1.19.0-0" .Capabilities.KubeVersion.GitVersion }}
 apiVersion: networking.k8s.io/v1
+{{- else }}
+apiVersion: networking.k8s.io/v1beta1
+{{- end }}
 kind: Ingress
 metadata:
   name: {{ $relname }}-{{ $domain }}
