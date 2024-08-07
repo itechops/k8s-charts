@@ -4,7 +4,7 @@ This will automatically deploy an app to kubernetes.
 
 ## Prerequisites
 [Install Helm](https://github.com/kubernetes/helm#install)
-`helm repo add itech https://itechops.github.io/k8s-charts/`
+`helm repo add itech https://gitlab.dev.itech.md/itech/k8s-charts`
 
 ## Usage
 
@@ -13,6 +13,36 @@ Copy the generic values to a location of your filesystem for modification and cu
 
 Now simply run the helm command:
 `helm install -f updated-values.yaml itech/generic-app --name your-appname --namespace your-namespace`
+
+For environmental variables several options 
+
+  ```
+  env:
+    - name: NODE_ENV
+      value: production
+  envFrom: 
+    - secretRef:
+        name: nginx-config
+   ```
+
+For volumes with secrets 
+
+  ```
+volumes:
+   - name: secrets-store-inline
+     csi:
+       driver: secrets-store.csi.k8s.io
+       readOnly: true
+       volumeAttributes:
+         secretProviderClass: "vault-application"
+
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts:
+   - name: secrets-store-inline
+     mountPath: "/mnt/secrets-store"
+     readOnly: true
+   ```
 
 For LoadBalancers you have several options
 

@@ -2,8 +2,10 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 deployment:
-  healthcheck: /healthz
+  healthcheck: {}
+  # healthcheck: /healthz
   podAnnotations: {}
+  serviceAccountName: {}
   #serviceAccountName: ...
   #healthcheckCommand: # Use this in alternative to "healthcheck"
   #  - "echo"
@@ -15,6 +17,13 @@ deployment:
   # args: ["run", "start"] # Optional: Allows the specification start command parameters
   # strategy: # Optional: Specify Recreate instead of rolling update, useful for background jobs
   #   type: Recreate
+  env: {}
+    # - name: NODE_ENV
+    #   value: production
+  envFrom: {}
+    # - secretRef:
+    #     name: nginx-config
+
   podAntiaffinity:
     enabled: true
   initialDelaySeconds: 10 # optional; defaults to 10
@@ -25,12 +34,32 @@ deployment:
   minReadySeconds: 1 # optional; defaults to 1
 replicaCount: 1
 hpa:
+  enabled: false
   maxReplicas: 2
   minReplicas: 1
   cpuUtilization:
     targetPercentage: 70
   memoryUtilization:
     targetPercentage: 70
+
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+secrets: {}
+  # - data:
+  #     EMAIL_PASSWORD: abracadabra@example.com
+  #   name: example
+  #   type: Opaque
+
 service:
 # `LoadBalancer` / `ClusterIP` / `""` are available options
 # Use `ClusterIP` without ports for a background process
@@ -47,4 +76,18 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-    
+
+volumes: []
+  # - name: secrets-store-inline
+  #   csi:
+  #     driver: secrets-store.csi.k8s.io
+  #     readOnly: true
+  #     volumeAttributes:
+  #       secretProviderClass: "vault-application"
+
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: []
+  # - name: secrets-store-inline
+  #   mountPath: "/mnt/secrets-store"
+  #   readOnly: true

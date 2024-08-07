@@ -1,6 +1,6 @@
 apiVersion: v2
 description: A Helm chart for Generic iTech Apps
-home: https://github.com/itechops/k8s-charts
+home: https://gitlab.dev.itech.md/itech/k8s-charts
 icon: https://minio.itech.md/public/faviconold.ico
 keywords:
 - itech-generic-app
@@ -9,5 +9,5 @@ maintainers:
   email: support@itech.md
 name: generic-app
 sources:
-- https://github.com/itechops/k8s-charts
+- https://gitlab.dev.itech.md/itech/k8s-charts
 version: 0.2.5
